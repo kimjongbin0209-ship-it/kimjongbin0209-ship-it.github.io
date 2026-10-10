@@ -4,6 +4,7 @@
   const navigation = document.querySelector('.nav');
   const menuToggle = document.querySelector('.menu-toggle');
   const themePicker = document.querySelector('.theme-picker');
+  const contactPickers = [...document.querySelectorAll('.contact-picker')];
   const themeButtons = [...document.querySelectorAll('[data-theme-choice]')];
   const systemDark = matchMedia('(prefers-color-scheme: dark)');
   const motionAllowed = matchMedia('(prefers-reduced-motion: no-preference)');
@@ -24,6 +25,29 @@
   }
 
   applyTheme();
+  function closeContacts(returnFocus = false) {
+    for (const picker of contactPickers) {
+      if (!picker.open) continue;
+      picker.open = false;
+      if (returnFocus) picker.querySelector('summary').focus({ preventScroll: true });
+    }
+  }
+  for (const picker of contactPickers) {
+    picker.addEventListener('toggle', () => {
+      if (!picker.open) return;
+      themePicker.open = false;
+      for (const other of contactPickers) if (other !== picker) other.open = false;
+    });
+    picker.addEventListener('click', event => {
+      if (event.target.closest('.email-option')) {
+        picker.open = false;
+        picker.querySelector('summary').focus({ preventScroll: true });
+      }
+    });
+  }
+  themePicker.addEventListener('toggle', () => {
+    if (themePicker.open) closeContacts();
+  });
   systemDark.addEventListener('change', applyTheme);
   for (const button of themeButtons) {
     button.addEventListener('click', () => {
@@ -59,6 +83,7 @@
     document.title = page.id === 'home' ? 'Jonathan Jongbin Kim' : `${page.dataset.page} · Jonathan Jongbin Kim`;
     closeMenu();
     themePicker.open = false;
+    closeContacts();
     if (moveFocus) {
       window.scrollTo({ top: 0, behavior: 'instant' });
       const heading = page.querySelector('h1, h2');
@@ -76,10 +101,12 @@
   });
   document.addEventListener('click', event => {
     if (!themePicker.contains(event.target)) themePicker.open = false;
+    for (const picker of contactPickers) if (!picker.contains(event.target)) picker.open = false;
     if (!event.target.closest('.nav-container')) closeMenu();
   });
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape') return;
+    closeContacts(true);
     if (themePicker.open) {
       themePicker.open = false;
       themePicker.querySelector('summary').focus({ preventScroll: true });

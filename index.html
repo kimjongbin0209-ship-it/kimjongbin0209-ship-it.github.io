@@ -15,8 +15,8 @@
     } catch { /* Fall back to the system theme. */ }
   </script>
   <!-- Refresh these content hashes when the corresponding asset changes. -->
-  <link rel="stylesheet" href="style.css?v=095c9b1df979" />
-  <script src="script.js?v=5c20bac68cf3" defer></script>
+  <link rel="stylesheet" href="style.css?v=b8e605a887bd" />
+  <script src="script.js?v=48775669b915" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -74,7 +74,13 @@
               <div class="social-links" aria-label="Connect with me">
                 <a class="social-link" href="https://github.com/kimjongbin0209-ship-it" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-tooltip="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-github"></use></svg></a>
                 <a class="social-link" href="https://www.linkedin.com/in/jongbin-jon-kim/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-tooltip="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-linkedin"></use></svg></a>
-                <a class="social-link" href="mailto:jonathan.j.kim0209@gmail.com" aria-label="Email Jonathan Kim" data-tooltip="Email"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg></a>
+                <details class="contact-picker">
+                  <summary class="social-link" aria-label="Choose an email address" data-tooltip="Email"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg></summary>
+                  <div class="contact-options">
+                    <a class="email-option" href="mailto:kimjongbin0209@kaist.ac.kr"><strong>KAIST</strong><span>kimjongbin0209@kaist.ac.kr</span></a>
+                    <a class="email-option" href="mailto:jonathan.j.kim0209@gmail.com"><strong>Gmail</strong><span>jonathan.j.kim0209@gmail.com</span></a>
+                  </div>
+                </details>
               </div>
               <div class="cv-links" aria-label="Curriculum vitae">
                 <a href="resume_en_research.pdf" target="_blank" rel="noopener noreferrer">CV (EN) <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-arrow"></use></svg></a>
@@ -345,7 +351,16 @@
   <footer>
     <div class="container footer-content">
       <p>© 2026 Jonathan Jongbin Kim</p>
-      <p>Daejeon, Republic of Korea · <a href="mailto:jonathan.j.kim0209@gmail.com">Get in touch <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-arrow"></use></svg></a></p>
+      <div class="footer-contact-group">
+        <p>Daejeon, Republic of Korea</p><span aria-hidden="true">·</span>
+        <details class="contact-picker">
+          <summary class="text-link" aria-label="Get in touch — choose an email address">Get in touch <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-arrow"></use></svg></summary>
+          <div class="contact-options">
+            <a class="email-option" href="mailto:kimjongbin0209@kaist.ac.kr"><strong>KAIST</strong><span>kimjongbin0209@kaist.ac.kr</span></a>
+            <a class="email-option" href="mailto:jonathan.j.kim0209@gmail.com"><strong>Gmail</strong><span>jonathan.j.kim0209@gmail.com</span></a>
+          </div>
+        </details>
+      </div>
     </div>
   </footer>
   <div class="cursor-dot" aria-hidden="true"></div>
